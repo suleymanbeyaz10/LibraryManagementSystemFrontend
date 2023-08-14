@@ -1,2 +1,2 @@
 # LibraryManagementSystemFrontend
-This angular application for my LibraryManagementSystem backend project
+This is an angular application for my LibraryManagementSystem backend project
