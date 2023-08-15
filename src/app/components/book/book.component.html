@@ -1,0 +1,9 @@
+<div class="mb-3">
+    <label for=" filterColor" class="form-label"></label>
+    <input type="text" [(ngModel)]="searchText" class="form-control" id="filterColor"
+        placeholder="Kitap Yazar veya Yayınevi adı giriniz...">
+</div>
+
+<div *ngIf="searchText.length>2" class="alert alert-secondary">
+    <strong>{{searchText}}</strong> aradınız
+</div>
