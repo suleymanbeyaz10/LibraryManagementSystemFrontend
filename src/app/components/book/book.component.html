@@ -1,9 +1,90 @@
-<div class="mb-3">
+<!-- <div class="mb-3">
     <label for=" filterColor" class="form-label"></label>
-    <input type="text" [(ngModel)]="searchText" class="form-control" id="filterColor"
+    <input type="text" [formControl]="searchControl" [(ngModel)]="searchResults" class="form-control" id="filterColor"
         placeholder="Kitap Yazar veya Yayınevi adı giriniz...">
 </div>
 
-<div *ngIf="searchText.length>2" class="alert alert-secondary">
-    <strong>{{searchText}}</strong> aradınız
+<div *ngIf="searchResults.length>2" class="alert alert-secondary">
+    <strong>{{searchResults}}</strong> aradınız
 </div>
+
+
+
+<table *ngIf="dataLoaded==true" class="table">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Yazar</th>
+            <th>Yayınevi</th>
+            <th>Kategoriler</th>
+            <th>Durum</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.bookName}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.categories}}</td>
+            <td *ngIf="">{{book.borrowedStatus}}</td>
+            <td><button type="button" class="btn btn-success">Ödünç Al</button></td>
+        </tr>
+    </tbody>
+</table> -->
+
+
+<div class="mb-3">
+    <label for="filterColor" class="form-label"></label>
+    <input type="text" [formControl]="searchControl" class="form-control" id="filterColor"
+        placeholder="Kitap Yazar veya Yayınevi adı giriniz...">
+</div>
+
+<div *ngIf="searchResults.length > 0" class="alert alert-secondary">
+    <strong>{{ searchControl.value }}</strong> için arama sonuçları:
+</div>
+
+<!-- <table *ngIf="searching" class="table">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Yazar</th>
+            <th>Yayınevi</th>
+            <th>Kategoriler</th>
+            <th>Durum</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of searchResults">
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.categories }}</td>
+            <td>{{ book.borrowedStatus }}</td>
+            <td><button type="button" class="btn btn-success">Ödünç Al</button></td>
+        </tr>
+    </tbody>
+</table> -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Yazar</th>
+            <th>Yayınevi</th>
+            <th>Kategoriler</th>
+            <th>Durum</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of searchedBooks">
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.categories }}</td>
+            <td>{{ book.borrowedCount }} / {{ book.copyCount }} </td>
+            <td><button type="button" class="btn btn-success">Ödünç Al</button></td>
+        </tr>
+    </tbody>
+</table>
